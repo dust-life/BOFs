@@ -1,0 +1,26 @@
+beacon_command_register(
+"EnablePriv", 
+"Enable privilege", 
+"EnablePriv privilege");
+
+alias EnablePriv {
+	local('$barch $handle $data $args');
+  
+	if(size(@_) != 2)
+	{
+		berror($1, "Incorrect usage!");
+		berror($1, beacon_command_detail("EnablePriv"));
+		return;
+	}
+  
+	# read in the right BOF file
+	$handle = openf(script_resource("EnablePriv.o"));
+	$data   = readb($handle, -1);
+	closef($handle);
+  
+	# pack our arguments
+	$args = bof_pack($1, "z", $2);
+  
+	# execute it.
+	beacon_inline_execute($1, $data, "go", $args);
+}
