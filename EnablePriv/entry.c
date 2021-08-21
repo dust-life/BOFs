@@ -11,7 +11,7 @@ WINADVAPI BOOL WINAPI ADVAPI32$LookupPrivilegeValueA(LPCWSTR lpSystemName,LPCWST
 WINBASEAPI BOOL WINAPI KERNEL32$CloseHandle(HANDLE hObject);
 
 void go(char* args, int length) {
-	HANDLE hToken;
+    HANDLE hToken;
     TOKEN_PRIVILEGES tp;
     LUID luid;
     datap  parser;
@@ -20,11 +20,11 @@ void go(char* args, int length) {
     BeaconDataParse(&parser, args, length);
     privilege = BeaconDataExtract(&parser, NULL);
     BeaconPrintf(CALLBACK_OUTPUT, "Enable %s", privilege);
-	if (!ADVAPI32$OpenProcessToken(KERNEL32$GetCurrentProcess(), TOKEN_ALL_ACCESS, &hToken))
-	{
-		BeaconPrintf(CALLBACK_ERROR, "OpenProcessToken error");
-		return FALSE;
-	}
+    if (!ADVAPI32$OpenProcessToken(KERNEL32$GetCurrentProcess(), TOKEN_ALL_ACCESS, &hToken))
+    {
+	BeaconPrintf(CALLBACK_ERROR, "OpenProcessToken error");
+	return FALSE;
+    }
     else
     {
         BeaconPrintf(CALLBACK_OUTPUT, "OpenProcessToken Success");
