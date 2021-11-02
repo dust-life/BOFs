@@ -6,7 +6,7 @@ WINBASEAPI FARPROC WINAPI KERNEL32$GetProcAddress (HMODULE hModule, LPCSTR lpPro
 
 void go(char * args, int alen) 
 {
-  HMODULE ntdll = KERNEL32$LoadLibraryA("ntdll.dll");
+  	HMODULE ntdll = KERNEL32$LoadLibraryA("ntdll.dll");
 	BOOLEAN bEnabled;
 	ULONG uResp;
 	NTSTATUS(NTAPI *RtlAdjustPrivilege)(ULONG, BOOLEAN, BOOLEAN, PBOOLEAN) = (NTSTATUS(NTAPI *)(ULONG, BOOLEAN, BOOLEAN, PBOOLEAN))KERNEL32$GetProcAddress(ntdll, "RtlAdjustPrivilege");
