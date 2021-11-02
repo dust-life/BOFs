@@ -5,3 +5,9 @@
 ```
 cl.exe /c /GS- entry.c /FoBSOD.o
 ```
+
+## Usage
+
+```
+beacon> inline-execute /path/to/BSOD.o
+```
